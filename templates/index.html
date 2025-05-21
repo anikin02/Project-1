@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>Spotify Songs</title>
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
+        {% macro render_table(headers, rows) %}
+        <table>
+            <thead>
+                <tr>
+                    {% for header in headers %}
+                    <th>{{ header }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in rows %}
+                <tr>
+                    {% for item in row %}
+                    <td>{{ item }}</td>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% endmacro %}
+        
+        <div class="table-links">
+          <a href="#all-tracks">Все треки</a> |
+          <a href="#top-artists">Топ артистов</a> |
+          <a href="#danceability-genre">Danceability по жанру</a> |
+          <a href="#tracks-genre">Треки по жанрам</a> |
+          <a href="#tracks-playlists">Треки в плейлистах</a> |
+          <a href="#years-stats">Сводка по годам</a>
+      </div>
+      
+      <h3 id="all-tracks">Все треки:</h3>
+      <a href="#" class="back-to-top">Назад</a>
+      {{ render_table(tracksHead, tracksBody) }}
+      
+      <h3 id="top-artists">Топ артистов по количеству треков:</h3>
+      <a href="#" class="back-to-top">Назад</a>
+      {{ render_table(artistCountHead, artistCountBody) }}
+      
+      <h3 id="danceability-genre">Danceability по жанру:</h3>
+      <a href="#" class="back-to-top">Назад</a>
+      {{ render_table(dancebilityByGenreHead, dancebilityByGenreBody) }}
+      
+      <h3 id="tracks-genre">Количество треков по жанрам:</h3>
+      <a href="#" class="back-to-top">Назад</a>
+      {{ render_table(tracksByGenreHead, tracksByGenreBody) }}
+      
+      <h3 id="tracks-playlists">Количество треков в плейлистах:</h3>
+      <a href="#" class="back-to-top">Назад</a>
+      {{ render_table(tracksDistributionByPlaylistHead, tracksDistributionByPlaylistBody) }}
+      
+      <h3 id="years-stats">Сводка по годам:</h3>
+      <a href="#" class="back-to-top">Назад</a>
+      {{ render_table(tracksStatsByYearHead, tracksStatsByYearBody) }}
+        
+    
+      </body>
+    </html>
